@@ -7,7 +7,7 @@ const Page = (props) => {
   return (
     <div>
        <Head>
-        <title></title>
+        <title>{props.data.Title}</title>
         <meta
         name="viewport"
         content="initial-scale=1.0, width=device-width"
@@ -24,19 +24,13 @@ const Page = (props) => {
         ul {
           padding: 0;
         }
+        .movie-desc label {
+          font-weight: 700
+        }
 
         li {
           list-style: none;
           margin: 5px 0;
-        }
-
-        a {
-          text-decoration: none;
-          color: blue;
-        }
-
-        a:hover {
-          opacity: 0.6;
         }
       `}</style>
       <section>
@@ -46,11 +40,39 @@ const Page = (props) => {
                     <img src={props.data.Poster} alt="" className="src"/>
                 </div>
                 <div className="col-md-7">
-                    <h3 className="movie-title">
-                        Title: 
-                    </h3>
                     <p className="movie-desc">
-                        Sypnosis: 
+                        <label>Title:</label> {props.data['Title']}
+                    </p>
+                    <p className="movie-desc">
+                        <label>Plot:</label> {props.data['Plot']}
+                    </p>
+                    <p className="movie-desc">
+                        <label>Release:</label> {props.data['Released']}
+                    </p>
+                    <p className="movie-desc">
+                        <label>Genre:</label> {props.data['Genre']}
+                    </p>
+                    <p className="movie-desc">
+                        <label>Director:</label> {props.data['Director']}
+                    </p>
+                    <p className="movie-desc">
+                        <label>Writer:</label> {props.data['Writer']}
+                    </p>
+                    <p className="movie-desc">
+                        <label>Actors : </label> <ol>
+                        {props.data['Actors'].split(',').map((item, i)=>{
+                          return <li key={i}>{item}</li>
+                        })}
+                        </ol>
+                    </p>
+                    <p className="movie-desc">
+                        <label>Country :</label> {props.data['Country']}
+                    </p>
+                    <p className="movie-desc">
+                        <label>IMDB RATING:</label> {props.data['imdbRating']}
+                    </p>
+                    <p className="movie-desc">
+                        <label>Runtime:</label> {props.data['Runtime']}
                     </p>
                 </div>
             </div>
@@ -64,7 +86,7 @@ Page.getInitialProps = async function(props) {
     console.log(props.query.id);
     const res = await fetch(`http://www.omdbapi.com?apikey=eb035411&i=${props.query.id}`);
     const data = await res.json();
-    
+    console.log(data);
     return {
       data: data
     };

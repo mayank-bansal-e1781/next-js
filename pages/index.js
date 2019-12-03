@@ -53,6 +53,17 @@ class Index extends React.Component  {
                 <div className="container">
                     <h1 className="display-4">Movie Search powered by Next JS</h1>
                     <p className="lead">This is sample test app build and it uses Online movie database API</p>
+                    <style jsx>
+                       {
+                           `
+                            input {
+                                display: inline-block;
+                                width: 500px;
+                            }
+                           `
+                       }
+
+                    </style>
                     <input className="form-control mr-sm-2" type="search" placeholder="Search" value={this.state.input} onChange={this.handleChange} />
                     <button className="btn btn-outline-primary" type="submit" onClick={this.handleClick} >Search</button>
                 </div>
