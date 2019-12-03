@@ -4,12 +4,6 @@ import fetch from 'isomorphic-unfetch'
 import Head from 'next/head'
 
 class Index extends React.Component  {
-    static async getInitialProps({ req }) {
-        const res = await fetch('https://api.github.com/repos/zeit/next.js')
-        const json = await res.json()
-        return { stars: json.stargazers_count }
-    }
-
     constructor(props) {
         super(props);
         this.state = {
