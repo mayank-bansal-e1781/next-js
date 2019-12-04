@@ -60,11 +60,22 @@ class Index extends React.Component  {
                                 display: inline-block;
                                 width: 500px;
                             }
+                            @media only screen and (max-width: 600px) {
+                                input {
+                                    display: block;
+                                    width: 100%;
+                                }
+                                button {
+                                    display: block;
+                                    margin: 0 auto;
+                                    margin-top: 15px;
+                                }
+                            }
                            `
                        }
 
                     </style>
-                    <input className="form-control mr-sm-2" type="search" placeholder="Search" value={this.state.input} onChange={this.handleChange} />
+                    <input className="form-control mr-sm-2" type="search" placeholder="Search movie" value={this.state.input} onChange={this.handleChange} />
                     <button className="btn btn-outline-primary" type="submit" onClick={this.handleClick} >Search</button>
                 </div>
             </div>    
