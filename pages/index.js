@@ -15,7 +15,7 @@ class Index extends React.Component  {
 
 
     handleClick = () =>{
-        fetch(`http://www.omdbapi.com/?apikey=eb035411&s=${this.state.input}`)
+        fetch(`http://www.omdbapi.com/?apikey=APIKEY&s=${this.state.input}`)
         .then((results) => {
             return results.json();
         })
